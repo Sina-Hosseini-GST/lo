@@ -1,5 +1,11 @@
 @tailwind base;
 @tailwind components;
+
+@font-face {
+  font-family: 'mottercorpusstd';
+  src: url('./fonts/MotterCorpusStd-Regular.ttf') format('ttf');
+}
+
 @tailwind utilities;
 
 :root {
