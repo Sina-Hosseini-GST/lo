@@ -71,10 +71,11 @@ const Objects: React.FC<NumberOfObjects> = ({ numberOfObjects }) => {
       Matter.Engine.update(engine);
 
       boxes.forEach((box) => {
+        const boxWidth = (box.bounds.max.x - box.bounds.min.x);
         // Check if the box touches the left side of the screen
-        if (box.position.x <= (box.bounds.max.x - box.bounds.min.x) / 2) {
-          // Don't be pushed by any other boxes, and stop from going to the left
-          box.restitution = 0;
+        if (box.position.x <= boxWidth / 2) {
+          // Stop from going to the left
+          Matter.Body.setPosition(box, { x: boxWidth / 2, y: box.position.y });
           // Go down
           Matter.Body.setVelocity(box, { x: 0, y: box.velocity.y });
           // Bounce
