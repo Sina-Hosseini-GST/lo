@@ -87,7 +87,7 @@ const Objects: React.FC<NumberOfObjects> = ({ numberOfObjects }) => {
       requestAnimationFrame(update);
     };
 
-    requestAnimationFrame(update);
+    update();
     Matter.Render.run(render);
 
     return () => {
