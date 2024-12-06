@@ -8,9 +8,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`overflow-x-hidden font-mono`}
-      >
+      <body className='antialiased'>
         <Header />
         {children}
       </body>

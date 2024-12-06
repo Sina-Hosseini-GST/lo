@@ -3,7 +3,7 @@
 
 @font-face {
   font-family: 'mottercorpusstd';
-  src: url('./fonts/MotterCorpusStd-Regular.ttf') format('ttf');
+  src: url('./fonts/MotterCorpusStd-Regular.ttf') format('truetype');
 }
 
 @tailwind utilities;
