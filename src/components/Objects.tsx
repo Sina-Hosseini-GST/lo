@@ -73,7 +73,9 @@ const Objects: React.FC<NumberOfObjects> = ({ numberOfObjects }) => {
       boxes.forEach((box) => {
         // Check if the box touches the left side of the screen
         if (box.position.x <= (box.bounds.max.x - box.bounds.min.x) / 2) {
-          // Stop going to the left, and go down
+          // Don't be pushed by any other boxes, and stop from going to the left
+          box.restitution = 0;
+          // Go down
           Matter.Body.setVelocity(box, { x: 0, y: box.velocity.y });
           // Bounce
           Matter.Body.applyForce(box, box.position, { x: .25, y: 0 });
