@@ -25,11 +25,12 @@ const Header = () => {
 
   const [isActive, setIsActive] = useState(false);
 
-  const toggleMenu = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    event.stopPropagation();
+  // Show and hide the menu
+  const toggleMenu = () => {
     setIsActive(!isActive);
   };
 
+  // Hide the menu if outside is clicked
   const hideMenu = (event: MouseEvent) => {
     if (buttonRef.current && !buttonRef.current.contains(event.target as Node)
         && menuRef.current && !menuRef.current.contains(event.target as Node)) {
@@ -216,9 +217,9 @@ const Header = () => {
 
   return (
     <>
-      <header className='fixed inset-x-0 top-0 p-6 z-10'>
+      <header className='fixed inset-x-0 top-0 p-6'>
         <nav className='flex justify-end'>
-          <button className={`size-10 sm:size-11 bg-[#f9ec0c] rounded-md flex flex-col gap-1 justify-center items-center z-30`} onClick={toggleMenu} ref={buttonRef}>
+          <button className={`size-10 sm:size-11 bg-[#f9ec0c] rounded-md flex flex-col gap-1 justify-center items-center z-10`} onClick={toggleMenu} ref={buttonRef}>
             <span className={`bg-black rounded-full w-3 h-[3px]`} ref={barNo1Ref}></span>
             <span className={`bg-black rounded-full w-3 h-[3px]`} ref={barNo2Ref}></span>
             <span className={`bg-black rounded-full w-3 h-[3px]`} ref={barNo3Ref}></span>
@@ -270,7 +271,7 @@ const Header = () => {
           </div>
         </nav>
       </header>
-      {/* {isActive && (<Objects numberOfObjects={10} />)} */}
+      {isActive && (<Objects numberOfObjects={20} />)}
     </>
   )
 }

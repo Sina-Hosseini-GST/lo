@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
 import Matter from 'matter-js';
-import { gsap } from 'gsap';
 
 interface NumberOfObjects {
   numberOfObjects: number;
@@ -19,7 +18,6 @@ const Objects: React.FC<NumberOfObjects> = ({ numberOfObjects }) => {
       setWindowHeight(window.innerHeight);
     };
 
-    // Add event listener for window resize
     window.addEventListener('resize', handleResize);
 
     const engine = Matter.Engine.create();
@@ -41,21 +39,23 @@ const Objects: React.FC<NumberOfObjects> = ({ numberOfObjects }) => {
 
     const boxes: Matter.Body[] = [];
 
+    const imageSize = 300;
+
     for (let i = 0; i < numberOfObjects; i++) {
-      const size = 80 + (Math.random() * 80);
-      // Simulate delay by "(i * size * .5)"
-      const x = windowWidth + (i * size * .5);
-      const y = (windowHeight * .25) + (windowHeight * .5 * Math.random());
-      const imageUrl = `https://picsum.photos/200/300?random=${i}`;
-      const speed = 40 + (Math.random() * 40);
+      const size = 120 + (Math.random() * 30);
+      // Simulate delay by "(i * size)"
+      const x = windowWidth + (i * size);
+      const y = (windowHeight * .75 * Math.random());
+      const imageUrl = `https://picsum.photos/${imageSize}/${imageSize}?random=${i}`;
+      const speed = 80 + (Math.random() * 20);
 
       const box = Matter.Bodies.rectangle(x, y, size, size, {
-        restitution: .5,
+        restitution: .25,
         render: {
           sprite: {
             texture: imageUrl,
-            xScale: size / 200,
-            yScale: size / 300,
+            xScale: size / imageSize,
+            yScale: size / imageSize,
           },
         },
       });
@@ -71,10 +71,12 @@ const Objects: React.FC<NumberOfObjects> = ({ numberOfObjects }) => {
       Matter.Engine.update(engine);
 
       boxes.forEach((box) => {
-        // Contact the left side of the screen
+        // Check if the box touches the left side of the screen
         if (box.position.x <= (box.bounds.max.x - box.bounds.min.x) / 2) {
+          // Stop going to the left, and go down
           Matter.Body.setVelocity(box, { x: 0, y: box.velocity.y });
-          Matter.Body.applyForce(box, box.position, { x: 1, y: 0 });
+          // Bounce
+          Matter.Body.applyForce(box, box.position, { x: .25, y: 0 });
         }
       });
 
@@ -93,7 +95,7 @@ const Objects: React.FC<NumberOfObjects> = ({ numberOfObjects }) => {
 
   return (
     <canvas
-      className="fixed inset-0 z-10 bg-transparent"
+      className="fixed inset-0 z-20 bg-transparent"
       ref={canvasRef}
       width={windowWidth}
       height={windowHeight}
