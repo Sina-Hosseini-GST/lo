@@ -78,8 +78,6 @@ const Objects: React.FC<NumberOfObjects> = ({ numberOfObjects }) => {
           Matter.Body.setPosition(box, { x: boxWidth / 2, y: box.position.y });
           // Go down
           Matter.Body.setVelocity(box, { x: 0, y: box.velocity.y });
-          // Bounce
-          Matter.Body.applyForce(box, box.position, { x: .25, y: 0 });
         }
       });
 
