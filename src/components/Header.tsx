@@ -211,9 +211,11 @@ const Header = () => {
         duration,
       });
     }
-
-    document.addEventListener('click', hideMenu);
   }, [isActive]);
+
+  useEffect(() => {
+    document.addEventListener('click', hideMenu);
+  }, []);
 
   return (
     <>
