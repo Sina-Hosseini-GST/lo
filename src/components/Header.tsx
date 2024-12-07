@@ -143,19 +143,32 @@ const Header = () => {
         duration,
       });
 
-      gsap.matchMedia().add('(min-width: 1024px)', () => {
+      if (window.innerWidth >= 1024) {
         gsap.to(menuRef.current, {
           right: '-50%',
           duration,
         });
-      });
-
-      gsap.matchMedia().add('(max-width: 1023px)', () => {
+      }
+      else {
         gsap.to(menuRef.current, {
           right: '-100%',
           duration,
         });
-      });
+      }
+      
+      // gsap.matchMedia().add('(min-width: 1024px)', () => {
+      //   gsap.to(menuRef.current, {
+      //     right: '-50%',
+      //     duration,
+      //   });
+      // });
+
+      // gsap.matchMedia().add('(max-width: 1023px)', () => {
+      //   gsap.to(menuRef.current, {
+      //     right: '-100%',
+      //     duration,
+      //   });
+      // });
 
       gsap.to(bulletNo1Ref.current, {
         delay: duration * .25,
