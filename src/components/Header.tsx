@@ -144,7 +144,7 @@ const Header = () => {
       });
 
       gsap.to(menuRef.current, {
-        right: '-100%',
+        right: '-50%',
         duration,
       });
 
@@ -224,7 +224,7 @@ const Header = () => {
             <span className={`bg-black rounded-full w-3 h-[3px]`} ref={barNo2Ref}></span>
             <span className={`bg-black rounded-full w-3 h-[3px]`} ref={barNo3Ref}></span>
           </button>
-          <div className={`absolute w-full lg:w-1/2 inset-y-0 bg-[#008C44] top-0 h-svh flex flex-col justify-center items-center -right-full`} ref={menuRef}>
+          <div className={`absolute w-full lg:w-1/2 inset-y-0 bg-[#008C44] top-0 h-svh flex flex-col justify-center items-center -right-1/2`} ref={menuRef}>
             <div className='text-6xl'>
               <div className='flex items-center gap-4 sm:gap-8'>
                 <span className={`text-xs sm:text-sm text-white opacity-0 -translate-x-16`} ref={bulletNo1Ref}>
