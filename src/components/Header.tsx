@@ -219,7 +219,7 @@ const Header = () => {
     <>
       <header className='fixed inset-x-0 top-0 p-6'>
         <nav className='flex justify-end'>
-          <button className={`size-10 sm:size-11 bg-[#f9ec0c] rounded-md flex flex-col gap-1 justify-center items-center z-10`} onClick={toggleMenu} ref={buttonRef}>
+          <button className={`size-10 sm:size-11 bg-[#f9ec0c] rounded-md flex flex-col gap-1 justify-center items-center z-20`} onClick={toggleMenu} ref={buttonRef}>
             <span className={`bg-black rounded-full w-3 h-[3px]`} ref={barNo1Ref}></span>
             <span className={`bg-black rounded-full w-3 h-[3px]`} ref={barNo2Ref}></span>
             <span className={`bg-black rounded-full w-3 h-[3px]`} ref={barNo3Ref}></span>

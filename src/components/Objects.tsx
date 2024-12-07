@@ -96,7 +96,7 @@ const Objects: React.FC<NumberOfObjects> = ({ numberOfObjects }) => {
 
   return (
     <canvas
-      className="fixed inset-0 z-20 bg-transparent"
+      className="fixed inset-0 z-10 pointer-events-none"
       ref={canvasRef}
       width={windowWidth}
       height={windowHeight}
