@@ -143,9 +143,18 @@ const Header = () => {
         duration,
       });
 
-      gsap.to(menuRef.current, {
-        right: '-50%',
-        duration,
+      gsap.matchMedia().add('(min-width: 1024px)', () => {
+        gsap.to(menuRef.current, {
+          right: '-50%',
+          duration,
+        });
+      });
+
+      gsap.matchMedia().add('(max-width: 1023px)', () => {
+        gsap.to(menuRef.current, {
+          right: '-100%',
+          duration,
+        });
       });
 
       gsap.to(bulletNo1Ref.current, {
@@ -226,7 +235,7 @@ const Header = () => {
             <span className={`bg-black rounded-full w-3 h-[3px]`} ref={barNo2Ref}></span>
             <span className={`bg-black rounded-full w-3 h-[3px]`} ref={barNo3Ref}></span>
           </button>
-          <div className={`absolute w-full lg:w-1/2 inset-y-0 bg-[#008C44] top-0 h-svh flex flex-col justify-center items-center -right-1/2`} ref={menuRef}>
+          <div className={`absolute w-full lg:w-1/2 inset-y-0 bg-[#008C44] top-0 h-svh flex flex-col justify-center items-center -right-full lg:-right-1/2`} ref={menuRef}>
             <div className='text-6xl'>
               <div className='flex items-center gap-4 sm:gap-8'>
                 <span className={`text-xs sm:text-sm text-white opacity-0 -translate-x-16`} ref={bulletNo1Ref}>
