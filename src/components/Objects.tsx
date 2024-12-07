@@ -44,8 +44,8 @@ const Objects: React.FC<NumberOfObjects> = ({ numberOfObjects }) => {
       // Simulate delay by "(i * boxSize)"
       const x = windowWidth + (i * boxSize);
       const y = (windowHeight * .75 * Math.random());
-      const texture = `https://s2.svgbox.net/materialui.svg?ic=fastfood`;
-      // Using the link above, the texture has the width and height of 24
+      const texture = (i % 2 == 0) ? `https://s2.svgbox.net/materialui.svg?ic=fastfood` : `https://s2.svgbox.net/materialui.svg?ic=emoji_food_beverage`;
+      // Using the links above, each texture has the width and height of 24
       const textureSize = 24;
       const speed = 80 + (Math.random() * 20);
 
